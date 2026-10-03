@@ -1,0 +1,7 @@
+# Synthetic demo calibration only. Replace with measured values before experiments.
+# Fit standards at the same wavelength, optical path, solvent, and sensor gain:
+# absorbance = slope_au_per_mg_ml * concentration_mg_ml + intercept_au
+slope_au_per_mg_ml = 1.8
+intercept_au = 0.0
+vessel_volume_ml = 900.0
+pill_mass_mg = 500.0 # Mass of the measured active ingredient, not total tablet mass.
