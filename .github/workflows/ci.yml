@@ -1,8 +1,11 @@
-name: Rust checks
+name: Pill sensor Rust checks
 on: [push, pull_request]
 jobs:
   check:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pill-sensor
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
