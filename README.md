@@ -1,6 +1,5 @@
 
 ```
-
 ## Pill sensor
 
 The Rust prototype converts simulated or CSV optical readings into transmission, absorbance, and estimated dissolution curves.
