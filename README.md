@@ -1,11 +1,4 @@
-# Peel
 
-Peel MIT hackathon project.
-
-```text
-pill-sensor/   Rust sensor analysis, simulations, calibration, data, and tests
-app/           Placeholder for the future application
-.github/       Repository CI workflows
 ```
 
 ## Pill sensor
