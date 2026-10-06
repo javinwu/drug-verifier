@@ -130,7 +130,7 @@ Readings above 100% transmission, negative concentrations, and dissolution above
 | `data/example_readings.csv` | Synthetic input fixture |
 | `docs/hardware.md` | Hardware integration starting point |
 | `docs/live.md` | Live simulation, replay, and API guide |
-| `../app/` | Live browser dashboard served by Rust |
+| `../app/live/` | Live browser dashboard served by Rust |
 | `tests/` | Scientific calculation, input-validation, and CLI tests |
 | `../.github/workflows/ci.yml` | Formatting, lint, and test checks |
 

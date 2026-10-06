@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peel · Live dissolution</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><a class="wordmark" href="/">peel<span> / sensor lab</span></a><span id="status" class="badge" role="status">Connecting</span></header>
+    <section class="intro"><p class="eyebrow">LIVE EXPERIMENT</p><h1>A dissolution curve,<br>one reading at a time.</h1><p id="source">Connecting to the local sensor pipeline…</p></section>
+    <p id="error" class="error" role="alert" hidden></p>
+    <div class="layout">
+      <section class="chart panel" aria-label="Live dissolution graphs">
+        <div class="panel-heading"><h2>Optical readings & dissolution</h2><span id="count">0 readings</span></div>
+        <p id="empty" class="empty">Waiting for the first sensor reading…</p>
+        <img id="curve" alt="Live transmission, absorbance, and estimated percent dissolved against experiment time" hidden>
+        <p class="caption">Experiment time on the horizontal axis. Points are connected without smoothing.</p>
+      </section>
+      <aside>
+        <section class="panel readings"><p class="eyebrow">LATEST READING</p><div class="hero-value"><span id="dissolved">—</span><small>%</small></div><p class="muted">estimated dissolved</p><dl>
+          <div><dt>Experiment time</dt><dd id="elapsed">—</dd></div>
+          <div><dt>Transmission</dt><dd id="transmission">—</dd></div>
+          <div><dt>Absorbance</dt><dd id="absorbance">—</dd></div>
+          <div><dt>Concentration</dt><dd id="concentration">—</dd></div>
+          <div><dt>Dissolved mass</dt><dd id="mass">—</dd></div>
+        </dl><p id="freshness" class="muted">No readings received</p></section>
+        <section class="panel"><h2>Sensor signals</h2><dl>
+          <div><dt>Reference</dt><dd id="reference">—</dd></div>
+          <div><dt>Sample</dt><dd id="sample">—</dd></div>
+          <div><dt>Dark</dt><dd id="dark">—</dd></div>
+        </dl><p id="flags" class="muted">Quality flags will appear here.</p></section>
+        <section class="panel"><h2>Experiment record</h2><p id="calibration" class="muted">Loading calibration…</p><div class="downloads" id="downloads" hidden>
+          <a href="/curve.svg" download="dissolution.svg">Save graph ↗</a><a href="/dissolution.csv" download>Results CSV ↗</a><a href="/raw.ndjson" download>Sensor packets ↗</a><a href="/calibration.toml" download>Calibration ↗</a><a href="/run.txt" download>Run status ↗</a>
+        </div></section>
+      </aside>
+    </div>
+    <footer>Peel prototype · Calibrated optical estimates · <span id="notice">Checking data source…</span></footer>
+  </main>
+</body>
+</html>

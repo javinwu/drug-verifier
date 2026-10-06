@@ -174,17 +174,17 @@ pub fn serve(
                 "/" => (
                     200,
                     "text/html; charset=utf-8",
-                    include_bytes!("../../app/index.html").to_vec(),
+                    include_bytes!("../../app/live/index.html").to_vec(),
                 ),
                 "/app.js" => (
                     200,
                     "text/javascript; charset=utf-8",
-                    include_bytes!("../../app/app.js").to_vec(),
+                    include_bytes!("../../app/live/app.js").to_vec(),
                 ),
                 "/style.css" => (
                     200,
                     "text/css; charset=utf-8",
-                    include_bytes!("../../app/style.css").to_vec(),
+                    include_bytes!("../../app/live/style.css").to_vec(),
                 ),
                 "/api/status" => (
                     200,

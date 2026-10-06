@@ -1,13 +1,3 @@
-# Peel
-
-Peel MIT hackathon project.
-
-```text
-pill-sensor/   Rust sensor analysis, simulations, calibration, data, and tests
-app/           Local live dashboard, served by the Rust program
-.github/       Repository CI workflows
-```
-
 ## Pill sensor
 
 Start the hardware-less live sensor pipeline from the repository root:
@@ -44,6 +34,9 @@ See the [pill sensor guide](pill-sensor/README.md) for CSV inputs, calibration, 
 
 ## App
 
-The [app folder](app/README.md) contains a lightweight browser dashboard embedded
-in the Rust server. The JSON status API keeps acquisition and analysis separate
-from the UI, so a future app can consume the same results.
+The [app folder](app/README.md) contains the Tauri desktop application and
+TypeScript frontend. See its README for setup and development commands.
+
+The lightweight live sensor dashboard lives in `app/live/` and is embedded in
+the Rust sensor server. Its JSON status API keeps acquisition and analysis
+separate from the UI.

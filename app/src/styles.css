@@ -1,0 +1,529 @@
+:root {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #f5f7fa;
+  background: #0b0f14;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 1000px;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      #172234,
+      #0b0f14 40%
+    );
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+
+/* ----------------------------- */
+/* TOP BAR */
+/* ----------------------------- */
+
+.topbar {
+  height: 92px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 30px;
+
+  background: rgba(
+    17,
+    23,
+    32,
+    0.95
+  );
+
+  border-bottom: 1px solid #28313e;
+}
+
+.topbar h1 {
+  margin: 0;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.topbar p {
+  margin: 5px 0 0;
+
+  color: #8793a2;
+
+  font-size: 13px;
+}
+
+
+/* ----------------------------- */
+/* STATUS */
+/* ----------------------------- */
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 9px 14px;
+
+  border: 1px solid #313b49;
+  border-radius: 8px;
+
+  font-size: 13px;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+}
+
+.disconnected .status-dot {
+  background: #ff6262;
+}
+
+.connected .status-dot {
+  background: #45d483;
+}
+
+.connected {
+  color: #65e69c;
+}
+
+
+/* ----------------------------- */
+/* PAGE LAYOUT */
+/* ----------------------------- */
+
+.layout {
+  display: grid;
+
+  grid-template-columns:
+    260px minmax(0, 1fr);
+
+  min-height:
+    calc(100vh - 92px);
+}
+
+
+/* ----------------------------- */
+/* SIDEBAR */
+/* ----------------------------- */
+
+.sidebar {
+  background: rgba(
+    15,
+    20,
+    28,
+    0.96
+  );
+
+  border-right: 1px solid #28313e;
+
+  padding: 25px 20px;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar h2 {
+  margin: 0 0 6px;
+
+  font-size: 15px;
+}
+
+.sidebar label {
+  color: #93a0af;
+
+  font-size: 12px;
+}
+
+select {
+  width: 100%;
+
+  padding: 11px;
+
+  color: #f4f7fa;
+  background: #111821;
+
+  border: 1px solid #313b49;
+  border-radius: 7px;
+
+  outline: none;
+}
+
+select:focus {
+  border-color: #3f8cff;
+}
+
+
+/* ----------------------------- */
+/* BUTTONS */
+/* ----------------------------- */
+
+button {
+  width: 100%;
+
+  padding: 11px;
+
+  border-radius: 7px;
+
+  font-weight: 600;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+.primary-button {
+  color: white;
+  background: #2878ff;
+
+  border: 1px solid #3984ff;
+}
+
+.primary-button:hover {
+  background: #3c86ff;
+}
+
+.secondary-button {
+  color: #e4e9ef;
+  background: #171f2a;
+
+  border: 1px solid #313b49;
+}
+
+.secondary-button:hover {
+  background: #202a37;
+}
+
+.divider {
+  height: 1px;
+
+  margin: 23px 0;
+
+  background: #28313e;
+}
+
+
+/* ----------------------------- */
+/* RANGE BOX */
+/* ----------------------------- */
+
+.range-box {
+  padding: 13px;
+
+  background: #111821;
+
+  border: 1px solid #28313e;
+  border-radius: 8px;
+}
+
+.range-box span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #7f8b9a;
+
+  font-size: 11px;
+}
+
+.range-box strong {
+  font-size: 16px;
+}
+
+
+/* ----------------------------- */
+/* SMALL SIDEBAR DATA */
+/* ----------------------------- */
+
+.small-reading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 8px 0;
+
+  color: #8793a2;
+
+  font-size: 12px;
+}
+
+.small-reading strong {
+  color: #f5f7fa;
+}
+
+
+/* ----------------------------- */
+/* MAIN CONTENT */
+/* ----------------------------- */
+
+.content {
+  padding: 25px;
+
+  overflow: auto;
+}
+
+.card {
+  background: rgba(
+    18,
+    25,
+    34,
+    0.94
+  );
+
+  border: 1px solid #293443;
+  border-radius: 12px;
+
+  box-shadow:
+    0 8px 30px
+    rgba(0, 0, 0, 0.15);
+}
+
+.graph-card {
+  padding: 20px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 15px;
+}
+
+.card-header h2 {
+  margin: 0;
+
+  font-size: 17px;
+}
+
+.card-header p {
+  margin: 5px 0 0;
+
+  color: #7f8b9a;
+
+  font-size: 12px;
+}
+
+.scan-state {
+  padding: 7px 11px;
+
+  color: #9badc1;
+  background: #111821;
+
+  border: 1px solid #2b3745;
+  border-radius: 6px;
+
+  font-size: 11px;
+}
+
+
+/* ----------------------------- */
+/* GRAPH */
+/* ----------------------------- */
+
+.graph-container {
+  position: relative;
+
+  width: 100%;
+  height: 380px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(35, 53, 76, 0.2),
+      rgba(10, 15, 21, 0.15)
+    );
+
+  border-radius: 8px;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ----------------------------- */
+/* READINGS */
+/* ----------------------------- */
+
+.reading-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 15px;
+
+  margin-top: 15px;
+}
+
+.reading-card {
+  padding: 18px;
+}
+
+.reading-card span {
+  color: #8190a1;
+
+  font-size: 12px;
+}
+
+.reading-card h2 {
+  margin:
+    8px 0 5px;
+
+  font-size: 27px;
+}
+
+.reading-card small {
+  color: #647182;
+
+  font-size: 10px;
+}
+
+
+/* ----------------------------- */
+/* BOTTOM */
+/* ----------------------------- */
+
+.bottom-grid {
+  display: grid;
+
+  grid-template-columns:
+    2fr 1fr;
+
+  gap: 15px;
+
+  margin-top: 15px;
+}
+
+.bottom-grid .card {
+  padding: 20px;
+}
+
+
+/* ----------------------------- */
+/* TABLE */
+/* ----------------------------- */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px 10px;
+
+  text-align: left;
+
+  border-bottom:
+    1px solid #25303d;
+
+  font-size: 12px;
+}
+
+th {
+  color: #7f8b9a;
+
+  font-weight: 500;
+}
+
+td {
+  color: #dce2e8;
+}
+
+
+/* ----------------------------- */
+/* SYSTEM INFO */
+/* ----------------------------- */
+
+.info-card h2 {
+  margin:
+    0 0 15px;
+
+  font-size: 17px;
+}
+
+.system-row {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 12px 0;
+
+  border-bottom:
+    1px solid #25303d;
+
+  font-size: 12px;
+}
+
+.system-row span {
+  color: #7f8b9a;
+}
+
+.system-row strong {
+  font-weight: 500;
+}
+
+
+/* ----------------------------- */
+/* RESPONSIVE */
+/* ----------------------------- */
+
+@media (
+  max-width: 1100px
+) {
+
+  .reading-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
