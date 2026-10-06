@@ -1,13 +1,14 @@
-# Peel
 
+<<<<<<< HEAD
 Peel MIT hackathon project.
 
 ```text
 pill-sensor/   Rust sensor analysis, simulations, calibration, data, and tests
 app/           Tauri desktop application and TypeScript frontend
 .github/       Repository CI workflows
+=======
+>>>>>>> 06f644befd20440d85180e7f9f6a14dc77b5c835
 ```
-
 ## Pill sensor
 
 The Rust prototype converts simulated or CSV optical readings into transmission, absorbance, and estimated dissolution curves.
