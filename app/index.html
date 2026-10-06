@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Spectral Analyzer</title>
+
+    <script
+      type="module"
+      src="/src/main.ts"
+    ></script>
+  </head>
+
+  <body>
+    <div class="app">
+
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <div>
+          <h1>Spectral Analyzer</h1>
+
+          <p>
+            Optical analysis • 400–940 nm
+          </p>
+        </div>
+
+        <div
+          id="connectionStatus"
+          class="status disconnected"
+        >
+          <span class="status-dot"></span>
+          Disconnected
+        </div>
+      </header>
+
+
+      <main class="layout">
+
+        <!-- LEFT CONTROL PANEL -->
+        <aside class="sidebar">
+
+          <div class="sidebar-section">
+            <h2>Sensor</h2>
+
+            <label for="portSelect">
+              Serial Port
+            </label>
+
+            <select id="portSelect">
+              <option>COM3</option>
+              <option>COM4</option>
+              <option selected>COM5</option>
+              <option>COM6</option>
+            </select>
+
+            <button
+              id="connectButton"
+              class="primary-button"
+            >
+              Connect Sensor
+            </button>
+          </div>
+
+
+          <div class="divider"></div>
+
+
+          <div class="sidebar-section">
+
+            <h2>Scan</h2>
+
+            <div class="range-box">
+              <span>Wavelength Range</span>
+
+              <strong>
+                400 – 940 nm
+              </strong>
+            </div>
+
+            <button
+              id="startButton"
+              class="primary-button"
+            >
+              Start Scan
+            </button>
+
+            <button
+              id="stopButton"
+              class="secondary-button"
+            >
+              Stop Scan
+            </button>
+
+            <button
+              id="calibrateButton"
+              class="secondary-button"
+            >
+              Calibrate
+            </button>
+
+            <button
+              id="saveButton"
+              class="secondary-button"
+            >
+              Save Scan
+            </button>
+          </div>
+
+
+          <div class="divider"></div>
+
+
+          <div class="sidebar-section">
+
+            <h2>Scan Status</h2>
+
+            <div class="small-reading">
+
+              <span>Current scan</span>
+
+              <strong id="scanNumber">
+                #0
+              </strong>
+
+            </div>
+
+            <div class="small-reading">
+
+              <span>Data points</span>
+
+              <strong id="pointCount">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <section class="content">
+
+          <!-- GRAPH -->
+          <div class="card graph-card">
+
+            <div class="card-header">
+
+              <div>
+                <h2>Live Spectrum</h2>
+
+                <p>
+                  Detected light intensity by wavelength
+                </p>
+              </div>
+
+              <div
+                id="scanState"
+                class="scan-state"
+              >
+                Ready
+              </div>
+
+            </div>
+
+
+            <div class="graph-container">
+
+              <canvas
+                id="spectrumChart"
+              ></canvas>
+
+            </div>
+
+          </div>
+
+
+          <!-- LIVE VALUES -->
+          <div class="reading-grid">
+
+            <div class="card reading-card">
+
+              <span>
+                Wavelength
+              </span>
+
+              <h2 id="wavelengthValue">
+                --- nm
+              </h2>
+
+              <small>
+                Current spectral channel
+              </small>
+
+            </div>
+
+
+            <div class="card reading-card">
+
+              <span>
+                Frequency
+              </span>
+
+              <h2 id="frequencyValue">
+                --- THz
+              </h2>
+
+              <small>
+                Calculated from wavelength
+              </small>
+
+            </div>
+
+
+            <div class="card reading-card">
+
+              <span>
+                Intensity
+              </span>
+
+              <h2 id="intensityValue">
+                ---
+              </h2>
+
+              <small>
+                Sensor measurement
+              </small>
+
+            </div>
+
+
+            <div class="card reading-card">
+
+              <span>
+                Transmission
+              </span>
+
+              <h2 id="transmissionValue">
+                --- %
+              </h2>
+
+              <small>
+                Compared with calibration
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <!-- BOTTOM DATA AREA -->
+          <div class="bottom-grid">
+
+            <div class="card">
+
+              <div class="card-header">
+                <div>
+                  <h2>Latest Measurements</h2>
+                  <p>Most recent scan points</p>
+                </div>
+              </div>
+
+              <div class="table-wrapper">
+
+                <table>
+
+                  <thead>
+                    <tr>
+                      <th>Wavelength</th>
+                      <th>Frequency</th>
+                      <th>Intensity</th>
+                      <th>Transmission</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="measurementTable">
+
+                    <tr>
+                      <td colspan="4">
+                        No measurements yet
+                      </td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            </div>
+
+
+            <div class="card info-card">
+
+              <h2>System</h2>
+
+              <div class="system-row">
+                <span>Mode</span>
+                <strong>Simulation</strong>
+              </div>
+
+              <div class="system-row">
+                <span>Minimum wavelength</span>
+                <strong>400 nm</strong>
+              </div>
+
+              <div class="system-row">
+                <span>Maximum wavelength</span>
+                <strong>940 nm</strong>
+              </div>
+
+              <div class="system-row">
+                <span>Backend</span>
+                <strong>Rust / Tauri</strong>
+              </div>
+
+              <div class="system-row">
+                <span>Frontend</span>
+                <strong>TypeScript</strong>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+  </body>
+</html>

@@ -4,7 +4,7 @@ Peel MIT hackathon project.
 
 ```text
 pill-sensor/   Rust sensor analysis, simulations, calibration, data, and tests
-app/           Placeholder for the future application
+app/           Tauri desktop application and TypeScript frontend
 .github/       Repository CI workflows
 ```
 
@@ -31,4 +31,4 @@ See the [pill sensor guide](pill-sensor/README.md) for CSV inputs, calibration, 
 
 ## App
 
-The [app folder](app/README.md) is reserved for application development. No application framework has been selected yet.
+The [app folder](app/README.md) contains the Tauri desktop application and TypeScript frontend. See its README for setup and development commands.
