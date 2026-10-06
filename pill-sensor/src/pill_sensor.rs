@@ -8,6 +8,7 @@ use anyhow::{Result, ensure};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
 pub struct RawReading {
     pub time_s: f64,
     pub reference_intensity: f64,

@@ -21,9 +21,24 @@ The required hardware choices are the detector interface, intensity scale, wavel
 5. Acquire timestamped sample readings with the same settings. Send the four documented columns as CSV, or implement `ReadingSource` for the device and pass it to `peel::analyze`.
 6. Inspect the raw readings and quality flags alongside the curve. Compare measured standards with their known concentrations before interpreting pill runs.
 
-Firmware can emit a CSV header once, then one row per measurement. A host-side capture program can save the stream as a file or pipe a **finite** capture to `peel analyze --input - --config your-calibration.toml`. The current CLI stores the experiment in memory and exports when acquisition ends; it does not refresh a live display.
+The proposed streaming protocol is one newline-delimited JSON object per
+measurement, using the same four fields as `RawReading`. A host serial bridge
+can forward device bytes to `peel live --input - --config your-calibration.toml`.
+Each complete packet updates the report and live browser graph immediately.
+See the [live pipeline guide](live.md) for the packet contract and a fake-device
+command that exercises this handoff without hardware. A pause in incoming data
+does not end acquisition; EOF ends the experiment, and malformed input stops it
+with a visible error while preserving the last valid curve.
 
-For live processing, call `PillSensor::process` on each reading and send the returned point to a display or incremental logger. Keep device acquisition separate from the calculations so recorded data and hardware use the same analysis code.
+Firmware may instead emit a CSV header once and then one row per measurement;
+use `peel live --input - --format csv --config your-calibration.toml` for this
+format. The original `peel analyze --input - --config your-calibration.toml`
+still waits for a finite capture to reach EOF before exporting a batch report.
+
+The live runner calls `PillSensor::process` for every reading, exactly as batch
+analysis does. The simulator, recorded files, and future device therefore share
+one analysis implementation. Direct serial/USB access and firmware are not yet
+implemented; the host bridge supplies the bytes on stdin.
 
 ## Assumptions to revisit with real hardware
 

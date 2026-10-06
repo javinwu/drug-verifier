@@ -1,8 +1,10 @@
 //! Optical sensor acquisition and calibrated dissolution estimates for Peel.
 pub mod config;
+pub mod live;
 pub mod output;
 pub mod pill_sensor;
 pub mod source;
+pub mod stream;
 
 use anyhow::{Result, ensure};
 use config::ExperimentConfig;

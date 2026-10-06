@@ -8,6 +8,12 @@ pub trait ReadingSource {
     fn next_reading(&mut self) -> Result<Option<RawReading>>;
 }
 
+impl<S: ReadingSource + ?Sized> ReadingSource for Box<S> {
+    fn next_reading(&mut self) -> Result<Option<RawReading>> {
+        (**self).next_reading()
+    }
+}
+
 /// CSV also works with a finite sensor stream supplied through stdin.
 pub struct CsvSource<R: Read> {
     reader: csv::Reader<R>,

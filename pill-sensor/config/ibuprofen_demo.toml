@@ -1,0 +1,7 @@
+# FICTIONAL ibuprofen example for testing the software only.
+# All parameters are demo assumptions, not measured ibuprofen properties.
+# The optical slope below is invented; it is not an ibuprofen calibration.
+slope_au_per_mg_ml = 1.8
+intercept_au = 0.0
+vessel_volume_ml = 900.0
+pill_mass_mg = 200.0 # Assumed active ingredient mass for this fictional example.
